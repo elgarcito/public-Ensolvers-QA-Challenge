@@ -107,6 +107,8 @@ appium-doctor
 And leave it open in the background, don't close the console
 
 ### Test pages creation recommended steps for android and desktop
+0. Before all creations, you should change the configuration file according
+   to the type of test that you use on Desktop or Mobile
 1. First, create in [common folder](src/main/java/com/solvd/carina/example/pages/common)
 the Abstract page class with the abstract methods that your desktop or android web test is going to use.This class
 should extend AbstractPage class of carina. You should name it <ClassName>Base for example HomePageBase
@@ -145,6 +147,65 @@ which is an implementation for desktop of the HomePageBase.java abstract class, 
         return initPage(getDriver(),AppPageBase.class);
     }
 ```
+5. After you do this you must set an page opening strategy, that mean to set an url or an element in
+screen that is needed to check if the page is opened. For example
+```
+    @FindBy(xpath = "")
+    private ExtendedWebElement invalidPageMessage;
+    public InvalidPage(WebDriver driver) {
+        super(driver);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        setUiLoadedMarker(invalidPageMessage);
+    }
+```
+In this example this page that is the result of an action in other class,
+that delivers us this InvalidPage. This page has an ExtendedWebElement invalidPageMessage that
+is going to be a marker to know if the page has been loaded.First we set an opening strategy
+with `setPageOpeningStrategy(PageOpeningStrategy.)` and then set the marker with `setUiLoadedMarker(invalidPageMessage)`
+
+### Test pages creation recommended steps for API testing
+0. Before all creations, you should change the configuration file according to API
+1. Select an API to test
+2. If it is public check using postman or swagger the differents HTTP request
+for the POST,GET,DELETE,PUT and PATCH.
+3. Save the HTTP and save the needed information for each request
+4. Add the base url to the `api_url=` in [config file](src/main/resources/_config.properties) in this example
+`api_url=https://api.coincap.io`
+5. In the [api](src/main/java/com/solvd/carina/example/api) package create every
+method that you are going to use. As example in a criptocurrency API `GetAssetValue.java` this class should
+extends `AbstractApiMethodV2`
+6. We should add the following annotations to this class:
+```
+@Endpoint(url = "",methodType =)
+@ResponseTemplatePath(path = "")
+@RequestTemplatePath(path= "")
+@SuccessfulHttpStatus(status = )
+```
+The first one gives the class information about the url and the method type (GET,POST,etc).
+The second gives us information about the path of the response.
+The third one gives us information about the path of the request.
+The four one gives you information about the correct status of the call.
+As example:
+```
+@Endpoint(url = "${config.api_url}/v2/assets/${assetName}",methodType = HttpMethodType.GET)
+@ResponseTemplatePath(path = "api/users/get_asset_rs.json")
+@SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
+public class GetAssetValue extends AbstractApiMethodV2 {
+    public GetAssetValue(String assetName){
+        ignorePropertiesProcessor(NotStringValuesProcessor.class);
+        replaceUrlPlaceholder("assetName",assetName);
+    }
+}
+```
+7. We need to create the response JSON, this is going to have the information about
+how the response is going to be given and the type in each response and set it in
+the [api](src/test/resources/api) package.
+8. Then we create an JSON schema to compare it later using this [page](https://www.liquid-technologies.com/online-json-to-schema-converter)
+and leave it in the same page this document must be `document.schema`
+9.  Finally we create in the [domain](src/main/java/com/solvd/carina/example/domain) package the persistance class this class is a 
+POJO (Plain old java object). This class only contains the information needed to be checked later or used in the test, having only
+field, getters and setters.
+
 
 ### Test creation 
 1. All web Test classes should implement IAbstractTest as example
@@ -159,6 +220,15 @@ General example
 ```
 public class HelloWorld implements IAbstractTest,IMobileUtils {}
 ```
+2. When creating test the main idea is to have an action and then an assertion
+to check if every step is done properly
+3. When we test WEB we must use `.open()` and also then we check it when
+`.isPageOpened()`
+4. When we test API we should test `.expectResponseStatus(HttpResponseStatusType.OK_200)` with 
+this we check the proper response status then, `.callAPI()` to call the API. 
+Finally we use `.validateResponseAgainstSchema("path")`
+5. When calling a suite in `POM.xml` we should change `<suite>suit_xml_name</suite>`
+
 
 ### Author
 [@Edgar Aguirre](https://github.com/elgarcito)
