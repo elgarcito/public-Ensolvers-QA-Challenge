@@ -109,10 +109,10 @@ And leave it open in the background, don't close the console
 ### Test pages creation recommended steps for android and desktop
 0. Before all creations, you should change the configuration file according
    to the type of test that you use on Desktop or Mobile
-1. First, create in [common folder](src/main/java/com/solvd/carina/example/pages/common)
+1. First, create in [common folder](src/main/java/com/solvd/carina/example/gui/pages/common)
 the Abstract page class with the abstract methods that your desktop or android web test is going to use.This class
 should extend AbstractPage class of carina. You should name it <ClassName>Base for example HomePageBase
-2. Then create the implementation of it in the [desktop](src/main/java/com/solvd/carina/example/pages/desktop) folder.
+2. Then create the implementation of it in the [desktop](src/main/java/com/solvd/carina/example/gui/pages/desktop) folder.
 This class should extend its abstract class — for example, HomePage extends HomePageBase. 
 You must use the following annotation over the child class:
 ```
