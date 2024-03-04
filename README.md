@@ -228,6 +228,18 @@ to check if every step is done properly
 this we check the proper response status then, `.callAPI()` to call the API. 
 Finally we use `.validateResponseAgainstSchema("path")`
 5. When calling a suite in `POM.xml` we should change `<suite>suit_xml_name</suite>`
+6. If we want to add TEST data we use the following `R.TESTDATA.get("propertyName")`.
+We must previously have created the `_testdata.properties` in the resources folder, this file
+should be written in the following way, as example:
+```
+user:standard_user
+password:secret_sauce
+```
+So if we want to use it in the test, we should write, as example:
+``` 
+loginPage.typeUsername(R.TESTDATA.get("user"));
+loginPage.typePassword(R.TESTDATA.get("password"));
+```
 
 
 ### Author
