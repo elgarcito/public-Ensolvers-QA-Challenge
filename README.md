@@ -240,8 +240,10 @@ So if we want to use it in the test, we should write, as example:
 loginPage.typeUsername(R.TESTDATA.get("user"));
 loginPage.typePassword(R.TESTDATA.get("password"));
 ```
-
-
+Before running Tests remember to run [mvn lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle) or only 
+``` 
+mvn package -D skipTests 
+```
 ### Author
 [@Edgar Aguirre](https://github.com/elgarcito)
 
