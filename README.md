@@ -109,10 +109,10 @@ And leave it open in the background, don't close the console
 ### Test pages creation recommended steps for android and desktop
 0. Before all creations, you should change the configuration file according
    to the type of test that you use on Desktop or Mobile
-1. First, create in [common folder](src/main/java/com/solvd/carina/example/gui/pages/common)
+1. First, create in [common folder](src/main/java/com/ensolvers/carina/example/gui/pages/common)
 the Abstract page class with the abstract methods that your desktop or android web test is going to use.This class
 should extend AbstractPage class of carina. You should name it <ClassName>Base for example HomePageBase
-2. Then create the implementation of it in the [desktop](src/main/java/com/solvd/carina/example/gui/pages/desktop) folder.
+2. Then create the implementation of it in the [desktop](src/main/java/com/ensolvers/carina/example/gui/pages/desktop) folder.
 This class should extend its abstract class — for example, HomePage extends HomePageBase. 
 You must use the following annotation over the child class:
 ```
@@ -171,7 +171,7 @@ for the POST,GET,DELETE,PUT and PATCH.
 3. Save the HTTP and save the needed information for each request
 4. Add the base url to the `api_url=` in [config file](src/main/resources/_config.properties) in this example
 `api_url=https://api.coincap.io`
-5. In the [api](src/main/java/com/solvd/carina/example/api) package create every
+5. In the [api](src/main/java/com/ensolvers/carina/example/api) package create every
 method that you are going to use. As example in a criptocurrency API `GetAssetValue.java` this class should
 extends `AbstractApiMethodV2`
 6. We should add the following annotations to this class:
@@ -202,7 +202,7 @@ how the response is going to be given and the type in each response and set it i
 the [api](src/test/resources/api) package.
 8. Then we create an JSON schema to compare it later using this [page](https://www.liquid-technologies.com/online-json-to-schema-converter)
 and leave it in the same page this document must be `document.schema`
-9.  Finally we create in the [domain](src/main/java/com/solvd/carina/example/domain) package the persistance class this class is a 
+9.  Finally we create in the [domain](src/main/java/com/ensolvers/carina/example/domain) package the persistance class this class is a 
 POJO (Plain old java object). This class only contains the information needed to be checked later or used in the test, having only
 field, getters and setters.
 

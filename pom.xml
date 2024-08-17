@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.solvd</groupId>
-    <artifactId>Carina-Base-Framework</artifactId>
+    <artifactId>Ensolvers-QA-Challenge</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Carina Example</name>
+    <name>Ensolvers Edgar</name>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
