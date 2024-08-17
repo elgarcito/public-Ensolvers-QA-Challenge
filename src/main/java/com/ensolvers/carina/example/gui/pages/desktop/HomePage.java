@@ -1,6 +1,7 @@
 package com.ensolvers.carina.example.gui.pages.desktop;
 
 import com.ensolvers.carina.example.gui.pages.common.HomePageBase;
+import com.ensolvers.carina.example.gui.pages.common.TodoItemsPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
@@ -21,6 +22,12 @@ public class HomePage extends HomePageBase {
 
     @FindBy(xpath = "//h4[contains(text(),\"Logged out successfully!\")]")
     private ExtendedWebElement loggedOutSuccessfullyMessage;
+
+    @FindBy(id = "entity-menu")
+    private ExtendedWebElement manageListsButton;
+
+    @FindBy(xpath = "//a[@class='dropdown-item'][text()='To Do Item']")
+    private ExtendedWebElement toDoItemButton;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -43,5 +50,14 @@ public class HomePage extends HomePageBase {
         return loggedOutSuccessfullyMessage.isDisplayed();
     }
 
+    @Override
+    public void clickManageListsButton() {
+        manageListsButton.click();
+    }
 
+    @Override
+    public TodoItemsPageBase clickToDoItemButton() {
+        toDoItemButton.click();
+        return initPage(getDriver(),TodoItemsPageBase.class);
+    }
 }
