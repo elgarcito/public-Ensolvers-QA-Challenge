@@ -7,6 +7,10 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 @DeviceType(pageType = DeviceType.Type.DESKTOP,parentClass = TodoItemsPageBase.class)
 public class TodoItemsPage extends TodoItemsPageBase {
@@ -35,6 +39,8 @@ public class TodoItemsPage extends TodoItemsPageBase {
 
     @Override
     public boolean checkCreatedMessageAppear() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(createdNewToDoItemMessage));
         return createdNewToDoItemMessage.isDisplayed();
     }
 }

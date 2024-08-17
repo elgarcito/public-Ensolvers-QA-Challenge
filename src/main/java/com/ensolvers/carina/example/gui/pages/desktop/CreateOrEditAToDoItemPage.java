@@ -8,7 +8,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 @DeviceType(pageType = DeviceType.Type.DESKTOP,parentClass = CreateOrEditAToDoItemPageBase.class)
 public class CreateOrEditAToDoItemPage extends CreateOrEditAToDoItemPageBase {
@@ -24,6 +29,9 @@ public class CreateOrEditAToDoItemPage extends CreateOrEditAToDoItemPageBase {
 
     @FindBy(id = "save-entity")
     private ExtendedWebElement saveButton;
+
+    @FindBy(xpath = "//div[contains(text(),'error.http.500')]")
+    private ExtendedWebElement longTitleErrorMessage;
 
     private WebElement folderList=driver.findElement(By.id("to-do-item-folder"));
 
@@ -56,7 +64,9 @@ public class CreateOrEditAToDoItemPage extends CreateOrEditAToDoItemPageBase {
     }
 
     @Override
-    public boolean checkToDoCorrectCreatedMessage() {
-        return false;
+    public boolean checkErrorCreatedMessage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(longTitleErrorMessage));
+        return longTitleErrorMessage.isDisplayed();
     }
 }

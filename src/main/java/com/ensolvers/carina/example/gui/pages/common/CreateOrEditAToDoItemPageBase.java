@@ -12,5 +12,5 @@ public abstract class CreateOrEditAToDoItemPageBase extends AbstractPage {
     public abstract void typeDescription(String tittle);
     public abstract void selectFolder();
     public abstract void clickSaveButton();
-    public abstract boolean checkToDoCorrectCreatedMessage();
+    public abstract boolean checkErrorCreatedMessage();
 }
