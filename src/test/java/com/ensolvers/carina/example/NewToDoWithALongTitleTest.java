@@ -14,10 +14,10 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class NewToDoWithALongTitle implements IAbstractTest {
+public class NewToDoWithALongTitleTest implements IAbstractTest {
     @MethodOwner(owner = "edgar")
     @Test(description = "New to do Item with a really long tittle, it is a bug")
-    public void NewToDoWithALongTitle(){
+    public void newToDoWithALongTitleTest(){
         LoginPageBase loginPage=initPage(getDriver(), LoginPageBase.class);
         loginPage.open();
         Assert.assertTrue(loginPage.isPageOpened(),"Home page is not opened");
@@ -35,6 +35,5 @@ public class NewToDoWithALongTitle implements IAbstractTest {
         createOrEditAToDoItemPage.selectFolder();
         createOrEditAToDoItemPage.clickSaveButton();
         Assert.assertTrue(createOrEditAToDoItemPage.checkErrorCreatedMessage(),"Error message does not appear");
-
     }
 }
