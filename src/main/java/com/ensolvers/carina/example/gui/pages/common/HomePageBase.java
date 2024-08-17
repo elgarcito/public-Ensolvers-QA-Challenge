@@ -8,4 +8,7 @@ public abstract class HomePageBase extends AbstractPage {
     public HomePageBase(WebDriver driver) {
         super(driver);
     }
+    public abstract void clickAccountButton();
+    public abstract void clickSingOutButton();
+    public abstract boolean checkCorrectLogOut();
 }

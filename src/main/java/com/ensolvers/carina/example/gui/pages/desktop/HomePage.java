@@ -13,9 +13,35 @@ public class HomePage extends HomePageBase {
     @FindBy(xpath = "//h2[contains(text(),\"Welcome to Ensolvers QA Challenge!\")]")
     private ExtendedWebElement homePageTittle;
 
+    @FindBy(id = "account-menu")
+    private ExtendedWebElement accountMenuButton;
+
+    @FindBy(xpath = "//a[@data-cy=\"logout\"]")
+    private ExtendedWebElement singOutButton;
+
+    @FindBy(xpath = "//h4[contains(text(),\"Logged out successfully!\")]")
+    private ExtendedWebElement loggedOutSuccessfullyMessage;
+
     public HomePage(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(homePageTittle);
     }
+
+    @Override
+    public void clickAccountButton() {
+        accountMenuButton.click();
+    }
+
+    @Override
+    public void clickSingOutButton() {
+        singOutButton.click();
+    }
+
+    @Override
+    public boolean checkCorrectLogOut() {
+        return loggedOutSuccessfullyMessage.isDisplayed();
+    }
+
+
 }
