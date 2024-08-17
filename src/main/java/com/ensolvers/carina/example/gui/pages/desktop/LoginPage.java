@@ -14,6 +14,9 @@ public class LoginPage extends LoginPageBase {
     @FindBy(xpath = "//h5[@class='modal-title']")
     private ExtendedWebElement singInTittle;
 
+    @FindBy(xpath = "//div[contains(text(),\" Please check your credentials and try again.\")]" )
+    private ExtendedWebElement failedSingInMessage;
+
     @FindBy(id = "username")
     private ExtendedWebElement usernameInput;
 
@@ -47,8 +50,9 @@ public class LoginPage extends LoginPageBase {
     }
 
     @Override
-    public boolean checkCorrectSingIn() {
-        return false;
+    public boolean checkInCorrectSingIn() {
+        Boolean response=failedSingInMessage.isElementPresent();
+        return response;
     }
 
 }

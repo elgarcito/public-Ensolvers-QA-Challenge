@@ -12,5 +12,5 @@ public abstract class LoginPageBase extends AbstractPage {
     public abstract void typeUsername(String username);
     public abstract void typePassword(String password);
     public abstract HomePageBase clickSingInButton();
-    public abstract boolean checkCorrectSingIn();
+    public abstract boolean checkInCorrectSingIn();
 }
