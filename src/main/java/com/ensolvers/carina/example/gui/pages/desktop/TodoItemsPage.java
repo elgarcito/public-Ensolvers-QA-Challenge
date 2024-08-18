@@ -3,6 +3,7 @@ package com.ensolvers.carina.example.gui.pages.desktop;
 import com.ensolvers.carina.example.gui.pages.common.CreateOrEditAToDoItemOnlyEditPageBase;
 import com.ensolvers.carina.example.gui.pages.common.CreateOrEditAToDoItemPageBase;
 import com.ensolvers.carina.example.gui.pages.common.TodoItemsPageBase;
+import com.ensolvers.carina.example.gui.pages.common.ViewPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
@@ -31,6 +32,10 @@ public class TodoItemsPage extends TodoItemsPageBase {
 
     @FindBy(xpath = "//span[contains(text(),\"Edit\")][1]")
     private ExtendedWebElement editButton;
+
+    @FindBy(xpath = "//span[contains(text(),\"View\")][1]")
+    private ExtendedWebElement viewButton;
+
 
 
 
@@ -64,5 +69,11 @@ public class TodoItemsPage extends TodoItemsPageBase {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(updatedToDoItemMessage));
         return updatedToDoItemMessage.isDisplayed();
+    }
+
+    @Override
+    public ViewPageBase clickViewButton() {
+        viewButton.click();
+        return initPage(getDriver(), ViewPageBase.class);
     }
 }
