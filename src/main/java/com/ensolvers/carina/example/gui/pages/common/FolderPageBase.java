@@ -10,7 +10,7 @@ public abstract class FolderPageBase extends AbstractPage {
     }
 
     public abstract CreateOrEditAFolderPageBase clickCreateNewFolderButton();
-    public abstract CreateOrEditAFolderOnlyEditPageBase clickEditFolderButton();
+    public abstract CreateOrEditAFolderPageBase clickEditFolderButton();
     public abstract ViewFolderPageBase clickViewFolderButton();
     public abstract void clickDeleteFolderButton();
     public abstract void clickConfirmDeleteFolderButton();

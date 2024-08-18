@@ -1,6 +1,5 @@
 package com.ensolvers.carina.example.gui.pages.desktop;
 
-import com.ensolvers.carina.example.gui.pages.common.CreateOrEditAFolderOnlyEditPageBase;
 import com.ensolvers.carina.example.gui.pages.common.CreateOrEditAFolderPageBase;
 import com.ensolvers.carina.example.gui.pages.common.FolderPageBase;
 import com.ensolvers.carina.example.gui.pages.common.ViewFolderPageBase;
@@ -68,9 +67,9 @@ public class FolderPage extends FolderPageBase {
     }
 
     @Override
-    public CreateOrEditAFolderOnlyEditPageBase clickEditFolderButton() {
+    public CreateOrEditAFolderPageBase clickEditFolderButton() {
         editButton.click();
-        return initPage(getDriver(), CreateOrEditAFolderOnlyEditPageBase.class);
+        return initPage(getDriver(), CreateOrEditAFolderPageBase.class);
     }
 
     @Override
