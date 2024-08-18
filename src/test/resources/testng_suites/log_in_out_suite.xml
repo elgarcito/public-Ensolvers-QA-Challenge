@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Log in/out suite" verbose="-1" parallel="tests" thread-count="10">
+
+    <test name="CorrectLogInTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.CorrectLogInTest"/>
+        </classes>
+    </test>
+
+    <test name="IncorrectLogInTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.IncorrectLogInTest"/>
+        </classes>
+    </test>
+
+    <test name="LogOutTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.LogOutTest"/>
+        </classes>
+    </test>
+
+
+</suite>

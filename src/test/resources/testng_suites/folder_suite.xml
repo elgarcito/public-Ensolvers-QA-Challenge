@@ -1,0 +1,49 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Folder suite" verbose="-1" parallel="tests" thread-count="10">
+
+    <test name="CheckManageFolderDirectButtonTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.CheckManageFolderDirectButtonTest"/>
+        </classes>
+    </test>
+
+    <test name="CreateNewFolderTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.CreateNewFolderTest"/>
+        </classes>
+    </test>
+
+    <test name="ViewFolderTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.ViewFolderTest"/>
+        </classes>
+    </test>
+
+    <test name="CreateNewFolderWithoutNameTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.CreateNewFolderWithoutNameTest"/>
+        </classes>
+    </test>
+
+    <test name="NewFolderWithALongNameTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.NewFolderWithALongNameTest"/>
+        </classes>
+    </test>
+
+    <test name="EditAFolderTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.EditAFolderTest"/>
+        </classes>
+    </test>
+
+    <test name="DeleteAFolderTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.DeleteAFolderTest"/>
+        </classes>
+    </test>
+
+
+</suite>

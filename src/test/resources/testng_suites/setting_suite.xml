@@ -1,0 +1,19 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Setting suite" verbose="-1" parallel="tests" thread-count="10">
+
+    <test name="SettingChangeTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.SettingChangeTest"/>
+        </classes>
+    </test>
+
+    <test name="SettingChangeNoMessageTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.SettingChangeNoMessageTest"/>
+        </classes>
+    </test>
+
+
+</suite>

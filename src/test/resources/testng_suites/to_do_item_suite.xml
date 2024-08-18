@@ -1,0 +1,58 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="To do item suite" verbose="-1" parallel="tests" thread-count="10">
+
+    <test name="CheckManageToDoItemDirectButtonTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.CheckManageToDoItemDirectButtonTest"/>
+        </classes>
+    </test>
+
+    <test name="NewToDoItemTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.NewToDoItemTest"/>
+        </classes>
+    </test>
+
+
+    <test name="ViewToDoItemTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.ViewToDoItemTest"/>
+        </classes>
+    </test>
+
+
+    <test name="NewToDoItemWithoutNameTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.NewToDoItemWithoutNameTest"/>
+        </classes>
+    </test>
+
+    <test name="NewToDoWithALongTitleTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.NewToDoWithALongTitleTest"/>
+        </classes>
+    </test>
+
+    <test name="NewToDoItemWithALongDescriptionTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.NewToDoItemWithALongDescriptionTest"/>
+        </classes>
+    </test>
+
+    <test name="EditToDoItemTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.EditToDoItemTest"/>
+        </classes>
+    </test>
+
+    <test name="DeleteAToDoItemTest">
+        <classes>
+            <class name="com.ensolvers.carina.example.DeleteAToDoItemTest"/>
+        </classes>
+    </test>
+
+
+
+</suite>
