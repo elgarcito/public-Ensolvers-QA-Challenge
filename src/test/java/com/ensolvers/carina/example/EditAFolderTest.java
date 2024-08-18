@@ -25,7 +25,7 @@ public class EditAFolderTest implements IAbstractTest {
         Assert.assertTrue(createOrEditAFolderEditPage.isPageOpened(),"Create or edit a folder page is not opened");
         createOrEditAFolderEditPage.typeFolderName(R.TESTDATA.get("newFolderName"));
         createOrEditAFolderEditPage.clickSaveButton();
+        pause(3);
         Assert.assertTrue(folderPage.checkUpdatedMessageAppear(),"Updated folder message not appeared");
-
     }
 }
