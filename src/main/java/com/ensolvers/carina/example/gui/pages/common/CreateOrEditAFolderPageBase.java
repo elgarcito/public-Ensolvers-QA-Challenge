@@ -10,4 +10,5 @@ public abstract class CreateOrEditAFolderPageBase extends AbstractPage {
 
     public abstract void typeFolderName(String folderName);
     public abstract void clickSaveButton();
+    public abstract boolean checkErrorCreatedMessage();
 }
