@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MasterSuite" parallel="true" thread-count="10">
+    <suite-files>
+        <suite-file path="log_in_out_suite.xml"/>
+        <suite-file path="setting_suite.xml"/>
+        <suite-file path="folder_suite.xml"/>
+        <suite-file path="to_do_item_suite.xml"/>
+    </suite-files>
+</suite>
