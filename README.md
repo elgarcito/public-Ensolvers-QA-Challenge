@@ -124,50 +124,6 @@ that delivers us this InvalidPage. This page has an ExtendedWebElement invalidPa
 is going to be a marker to know if the page has been loaded.First we set an opening strategy
 with `setPageOpeningStrategy(PageOpeningStrategy.)` and then set the marker with `setUiLoadedMarker(invalidPageMessage)`
 
-### Test pages creation recommended steps for API testing
-0. Before all creations, you should change the configuration file according to API
-1. Select an API to test
-2. If it is public check using postman or swagger the differents HTTP request
-for the POST,GET,DELETE,PUT and PATCH.
-3. Save the HTTP and save the needed information for each request
-4. Add the base url to the `api_url=` in [config file](src/main/resources/_config.properties) in this example
-`api_url=https://api.coincap.io`
-5. In the [api](src/main/java/com/ensolvers/carina/example/api) package create every
-method that you are going to use. As example in a criptocurrency API `GetAssetValue.java` this class should
-extends `AbstractApiMethodV2`
-6. We should add the following annotations to this class:
-```
-@Endpoint(url = "",methodType =)
-@ResponseTemplatePath(path = "")
-@RequestTemplatePath(path= "")
-@SuccessfulHttpStatus(status = )
-```
-The first one gives the class information about the url and the method type (GET,POST,etc).
-The second gives us information about the path of the response.
-The third one gives us information about the path of the request.
-The four one gives you information about the correct status of the call.
-As example:
-```
-@Endpoint(url = "${config.api_url}/v2/assets/${assetName}",methodType = HttpMethodType.GET)
-@ResponseTemplatePath(path = "api/users/get_asset_rs.json")
-@SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
-public class GetAssetValue extends AbstractApiMethodV2 {
-    public GetAssetValue(String assetName){
-        ignorePropertiesProcessor(NotStringValuesProcessor.class);
-        replaceUrlPlaceholder("assetName",assetName);
-    }
-}
-```
-7. We need to create the response JSON, this is going to have the information about
-how the response is going to be given and the type in each response and set it in
-the [api](src/test/resources/api) package.
-8. Then we create an JSON schema to compare it later using this [page](https://www.liquid-technologies.com/online-json-to-schema-converter)
-and leave it in the same page this document must be `document.schema`
-9.  Finally we create in the [domain](src/main/java/com/ensolvers/carina/example/domain) package the persistance class this class is a 
-POJO (Plain old java object). This class only contains the information needed to be checked later or used in the test, having only
-field, getters and setters.
-
-
 ### Test creation 
 1. All web Test classes should implement IAbstractTest as example
 ```
