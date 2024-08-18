@@ -12,5 +12,6 @@ public abstract class HomePageBase extends AbstractPage {
     public abstract void clickSingOutButton();
     public abstract void clickManageListsButton();
     public abstract TodoItemsPageBase clickToDoItemButton();
+    public abstract FolderPageBase clickFolderButton();
     public abstract boolean checkCorrectLogOut();
 }

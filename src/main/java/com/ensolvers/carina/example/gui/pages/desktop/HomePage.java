@@ -1,5 +1,6 @@
 package com.ensolvers.carina.example.gui.pages.desktop;
 
+import com.ensolvers.carina.example.gui.pages.common.FolderPageBase;
 import com.ensolvers.carina.example.gui.pages.common.HomePageBase;
 import com.ensolvers.carina.example.gui.pages.common.TodoItemsPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
@@ -28,6 +29,9 @@ public class HomePage extends HomePageBase {
 
     @FindBy(xpath = "//a[@class='dropdown-item'][text()='To Do Item']")
     private ExtendedWebElement toDoItemButton;
+
+    @FindBy(xpath = "//a[text()='Folder']")
+    private ExtendedWebElement folderButton;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -59,5 +63,11 @@ public class HomePage extends HomePageBase {
     public TodoItemsPageBase clickToDoItemButton() {
         toDoItemButton.click();
         return initPage(getDriver(),TodoItemsPageBase.class);
+    }
+
+    @Override
+    public FolderPageBase clickFolderButton() {
+        folderButton.click();
+        return initPage(getDriver(),FolderPageBase.class);
     }
 }
