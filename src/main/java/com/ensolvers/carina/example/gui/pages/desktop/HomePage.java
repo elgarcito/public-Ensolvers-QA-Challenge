@@ -37,6 +37,12 @@ public class HomePage extends HomePageBase {
     @FindBy(xpath = "//a[@data-cy=\"settings\"]")
     private ExtendedWebElement settingButton;
 
+    @FindBy(xpath = "//*[@id=\"app-view-container\"]/div[1]/div/div/div[2]/div/div[2]/div[1]/button")
+    private ExtendedWebElement manageToDoItemsDirectButton;
+
+    @FindBy(xpath = "//*[@id=\"app-view-container\"]/div[1]/div/div/div[2]/div/div[2]/div[2]/button")
+    private ExtendedWebElement manageFoldersDirectButton;
+
     public HomePage(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
@@ -79,5 +85,17 @@ public class HomePage extends HomePageBase {
     public UserSettingForUserPageBase clickSettingButton() {
         settingButton.click();
         return initPage(getDriver(),UserSettingForUserPageBase.class);
+    }
+
+    @Override
+    public TodoItemsPageBase clickManageToDoItemsDirectButton() {
+        manageToDoItemsDirectButton.click();
+        return initPage(getDriver(),TodoItemsPageBase.class);
+    }
+
+    @Override
+    public FolderPageBase clickManageFoldersDirectButton() {
+        manageFoldersDirectButton.click();
+        return initPage(getDriver(),FolderPageBase.class);
     }
 }
