@@ -36,7 +36,17 @@ public class TodoItemsPage extends TodoItemsPageBase {
     @FindBy(xpath = "//span[contains(text(),\"View\")][1]")
     private ExtendedWebElement viewButton;
 
+    @FindBy(xpath = "//span[contains(text(),\"Delete\")][1]")
+    private ExtendedWebElement deleteButton;
 
+    @FindBy(xpath = "//div[@class='modal-content']//div[@data-cy='toDoItemDeleteDialogHeading']")
+    private ExtendedWebElement confirmDeleteModal;
+
+    @FindBy(id = "jhi-confirm-delete-toDoItem")
+    private ExtendedWebElement confirmDeleteButton;
+
+    @FindBy(xpath = "//div[contains(text(),'A toDoItem is deleted with identifier ')]")
+    private ExtendedWebElement deletedToDoItemMessage;
 
 
     public TodoItemsPage(WebDriver driver) {
@@ -75,5 +85,29 @@ public class TodoItemsPage extends TodoItemsPageBase {
     public ViewPageBase clickViewButton() {
         viewButton.click();
         return initPage(getDriver(), ViewPageBase.class);
+    }
+
+    @Override
+    public boolean checkConfirmDeleteOperationModalAppear() {
+        WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.visibilityOf(confirmDeleteModal));
+        return confirmDeleteModal.isDisplayed();
+    }
+
+    @Override
+    public void clickDeleteButton() {
+        deleteButton.click();
+    }
+
+    @Override
+    public void clickConfirmDeleteButton() {
+        confirmDeleteButton.click();
+    }
+
+    @Override
+    public boolean checkDeletedMessageAppear() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(deletedToDoItemMessage));
+        return deletedToDoItemMessage.isDisplayed();
     }
 }
