@@ -30,13 +30,16 @@ public class TodoItemsPage extends TodoItemsPageBase {
     @FindBy(xpath = "//div[contains(text(),'A toDoItem is updated with identifier')]")
     private ExtendedWebElement updatedToDoItemMessage;
 
-    @FindBy(xpath = "//span[contains(text(),\"Edit\")][1]")
+    //@FindBy(xpath = "//span[contains(text(),\"Edit\")][1]")
+    @FindBy(xpath = "//a//span[contains(text(),\"Edit\")]")
     private ExtendedWebElement editButton;
 
-    @FindBy(xpath = "//span[contains(text(),\"View\")][1]")
+    //@FindBy(xpath = "//span[contains(text(),\"View\")][1]")
+    @FindBy(xpath = "//a//span[contains(text(),\"View\")]")
     private ExtendedWebElement viewButton;
 
-    @FindBy(xpath = "//span[contains(text(),\"Delete\")][1]")
+    //@FindBy(xpath = "//span[contains(text(),\"Delete\")][1]")
+    @FindBy(xpath = "//a//span[contains(text(),\"Delete\")]")
     private ExtendedWebElement deleteButton;
 
     @FindBy(xpath = "//div[@class='modal-content']//div[@data-cy='toDoItemDeleteDialogHeading']")
