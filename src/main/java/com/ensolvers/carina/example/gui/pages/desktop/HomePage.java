@@ -3,6 +3,7 @@ package com.ensolvers.carina.example.gui.pages.desktop;
 import com.ensolvers.carina.example.gui.pages.common.FolderPageBase;
 import com.ensolvers.carina.example.gui.pages.common.HomePageBase;
 import com.ensolvers.carina.example.gui.pages.common.TodoItemsPageBase;
+import com.ensolvers.carina.example.gui.pages.common.UserSettingForUserPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
@@ -32,6 +33,9 @@ public class HomePage extends HomePageBase {
 
     @FindBy(xpath = "//a[text()='Folder']")
     private ExtendedWebElement folderButton;
+
+    @FindBy(xpath = "//a[@data-cy=\"settings\"]")
+    private ExtendedWebElement settingButton;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -69,5 +73,11 @@ public class HomePage extends HomePageBase {
     public FolderPageBase clickFolderButton() {
         folderButton.click();
         return initPage(getDriver(),FolderPageBase.class);
+    }
+
+    @Override
+    public UserSettingForUserPageBase clickSettingButton() {
+        settingButton.click();
+        return initPage(getDriver(),UserSettingForUserPageBase.class);
     }
 }
